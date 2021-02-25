@@ -2,26 +2,29 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model BookListViewModel
+
 <header>
     <h1>Reading is Adventure!</h1>
 </header>
 
-@model IEnumerable<Bookstore.Models.Book>
+<!--This is how we will populate the view page with the book information-->
+@foreach (Bookstore.Models.Book x in Model.Books)
+{
+    <div>
+        <h4>Book Title: @x.Title</h4>
+        <p>Author: @x.Author</p>
+        <p>Publisher: @x.Publisher</p>
+        <p>ISBN: @x.ISBN</p>
+        <p>Category: @x.Category</p>
+        <p>Price: @x.Price</p>
+        <p>Number of Pages: @x.NumberOfPages</p>
 
-<div>
-    <tbody>
-        @foreach (Bookstore.Models.Book x in Model)
-        {
-        <tr>
-            <th>@x.Title</th>
-            <th>@x.Author</th>
-            <th>@x.Publisher</th>
-            <th>@x.ISBN</th>
-            <th>@x.Category</th>
-            <th>@x.Price</th>
-        </tr>
-        }
-    </tbody>
-    </table>
+    </div>
+}
+
+<div page-model="@Model.PagingInfo" page-action="index">
 
 </div>
+
+
