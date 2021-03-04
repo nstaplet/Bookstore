@@ -13,11 +13,19 @@
             <span class="navbar-brand ml-3">Bookstore</span>
         </div>
         <div class="row m-1 p-1">
-               
+            <div class="col-3">
+                <h1>Reading is adventure!</h1>
+                <vc:navigation-menu />
+            </div>
+
+            <div class="col-9">
+                @RenderBody()
+            </div>
 
         </div>
 
-        @RenderBody()
+        
+        
 
 </body>
 </html>

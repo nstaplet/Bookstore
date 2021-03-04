@@ -5,25 +5,19 @@
 @model BookListViewModel
 
 <header>
-    <h1>Reading is Adventure!</h1>
+    
 </header>
 
 <!--This is how we will populate the view page with the book information-->
 @foreach (Bookstore.Models.Book x in Model.Books)
 {
-    <div>
-        <h4>Book Title: @x.Title</h4>
-        <p>Author: @x.Author</p>
-        <p>Publisher: @x.Publisher</p>
-        <p>ISBN: @x.ISBN</p>
-        <p>Category: @x.Category</p>
-        <p>Price: @x.Price</p>
-        <p>Number of Pages: @x.NumberOfPages</p>
-
-    </div>
+    <partial name="BookSummary" model="x" />
 }
 
-<div page-model="@Model.PagingInfo" page-action="index">
+<div page-model="@Model.PagingInfo" page-action="index"
+     page-classes-enabled="true" page-class="btn" page-class-normal="btn outline-dark"
+     page-class-selected="btn-primary" page-url-category="@Model.Type"
+     class="btn-group pull-right m-1">
 
 </div>
 
