@@ -1,12 +1,28 @@
 ﻿@model Book 
 
-<div>
-    <h4>Book Title: @Model.Title</h4>
-    <p>Author: @Model.Author</p>
-    <p>Publisher: @Model.Publisher</p>
-    <p>ISBN: @Model.ISBN</p>
-    <p>Category: @Model.Category</p>
-    <p>Price: @Model.Price</p>
-    <p>Number of Pages: @Model.NumberOfPages</p>
+<div class="card card-outline-primary m-1 p-1">
+
+    <div class="bg-faded p-1">
+        <h4>Book Title: @Model.Title</h4>
+        <p>Author: @Model.Author</p>
+        <p>Publisher: @Model.Publisher</p>
+        <p>ISBN: @Model.ISBN</p>
+        <p>Category: @Model.Category</p>
+        <p>Price: @Model.Price</p>
+        <p>Number of Pages: @Model.NumberOfPages</p>
+    </div>
+
+    <form id="@Model.BookId" asp-page="/Purchase" method="post">
+        <input type="hidden" asp-for="BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-test p-1">
+            @Model.Title
+            <button type="submit" class="btn-sucess btn-sm pull-right" style="float:right">
+                Purchase
+            </button>
+        </span>
+    </form>
 
 </div>
+
+
